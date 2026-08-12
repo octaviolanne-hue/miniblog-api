@@ -6,7 +6,8 @@ const {
     getAuthors,
     getAuthorById,
     createAuthor,
-    updateAuthor
+    updateAuthor,
+    deleteAuthor
 } = require('../services/authors');
 
 router.get('/', async (req, res) => {
@@ -118,6 +119,26 @@ router.put('/:id', async (req, res) => {
 
         res.status(500).json({
         error: 'Error al actualizar autor'
+        });
+    }
+    });
+
+router.delete('/:id', async (req, res) => {
+    try {
+        const author = await deleteAuthor(req.params.id);
+
+        if (!author) {
+        return res.status(404).json({
+            error: 'Author no encontrado'
+        });
+        }
+
+        res.status(204).send();
+    } catch (error) {
+        console.error('Error eliminando autor:', error);
+
+        res.status(500).json({
+        error: 'Error al eliminar autor'
         });
     }
     });
