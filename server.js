@@ -25,6 +25,10 @@ app.get('/', (req, res) => {
 
 app.use('/api/authors', authorsRouter);
 app.use('/api/posts', postsRouter);
-app.listen(PORT, () => {
-    console.log(`Servidor corriendo en puerto ${PORT}`);
-});
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`Servidor corriendo en puerto ${PORT}`);
+    });
+}
+
+module.exports = app;
