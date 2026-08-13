@@ -19,6 +19,10 @@ Para ejecutar el proyecto localmente necesitás:
 - PostgreSQL
 - npm
 
+## API en producción
+
+https://miniblog-api-production-2234.up.railway.app
+
 ## Instalación
 
 Clonar el repositorio:
